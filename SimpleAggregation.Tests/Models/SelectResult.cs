@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SqlDataInsert.Tests.Models
+namespace SimpleAggregation.Tests.Models
 {
     public class SelectResult
     {

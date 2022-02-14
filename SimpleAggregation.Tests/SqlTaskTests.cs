@@ -1,11 +1,11 @@
 ﻿using NUnit.Framework;
 using Microsoft.Data.Sqlite;
-using SqlDataInsert.Tests.Helpers;
+using SimpleAggregation.Tests.Helpers;
 using System;
-using SqlDataInsert.Tests.Models;
+using SimpleAggregation.Tests.Models;
 using System.IO;
 
-namespace SqlDataInsert.Tests
+namespace SimpleAggregation.Tests
 {
     [TestFixture]
     public class SqlTaskTests

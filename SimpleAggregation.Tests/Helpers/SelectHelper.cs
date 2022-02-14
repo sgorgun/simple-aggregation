@@ -1,10 +1,10 @@
 ﻿using Microsoft.Data.Sqlite;
-using SqlDataInsert.Tests.Models;
+using SimpleAggregation.Tests.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace SqlDataInsert.Tests.Helpers
+namespace SimpleAggregation.Tests.Helpers
 {
     internal class SelectHelper
     {

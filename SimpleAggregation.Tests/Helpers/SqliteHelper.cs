@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Microsoft.Data.Sqlite;
 
-namespace SqlDataInsert.Tests.Helpers
+namespace SimpleAggregation.Tests.Helpers
 {
     internal static class SqliteHelper
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace SqlDataInsert
+namespace SimpleAggregation
 {
     public static class SqlTask
     {
