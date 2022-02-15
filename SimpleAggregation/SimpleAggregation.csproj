@@ -9,16 +9,13 @@
       <None Update="sql_queries\task1.sql">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="sql_queries\task2.sql">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="sql_queries\task3.sql">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="sql_queries\task4.sql">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="sql_queries\task2.sql">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="sql_queries\task5.sql">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
