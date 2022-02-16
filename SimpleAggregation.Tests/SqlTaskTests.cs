@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Microsoft.Data.Sqlite;
 using SimpleAggregation.Tests.Helpers;
 using System;
 using SimpleAggregation.Tests.Models;
@@ -35,26 +34,27 @@ namespace SimpleAggregation.Tests
         }
 
         [Test]
-        public void FileWithQueries_Exists([Range(0, FilesCount - 1)] int index)
+        public void FileWithQueries_Exists([Range(1, FilesCount)] int index)
         {
-            AssertFileExist(index);
+            AssertFileExist(index - 1);
         }
 
         [Test]
-        public void FileWithQueries_NotEmpty([Range(0, FilesCount - 1)] int index)
+        public void FileWithQueries_NotEmpty([Range(1, FilesCount)] int index)
         {
-            AssertFileNotEmpty(index);
+            AssertFileNotEmpty(index - 1);
         }
 
         [Test]
-        public void AllInsertQueries_ExecuteSuccessfully([Range(0, FilesCount - 1)] int index)
+        public void AllInsertQueries_ExecuteSuccessfully([Range(1, FilesCount)] int index)
         {
-            AssertData(index);
+            AssertData(index - 1);
         }
 
         [Test]
-        public void SelectQuery_ReturnsCorrectRowsCount([Range(0, FilesCount - 1)] int index)
+        public void SelectQuery_ReturnsCorrectRowsCount([Range(1, FilesCount)] int index)
         {
+            index -= 1;
             AssertData(index);
             var expected = ExpectedResults[index].Data.Length;
             var actual = ActualResults[index].Data.Length;
@@ -62,8 +62,9 @@ namespace SimpleAggregation.Tests
         }
 
         [Test]
-        public void SelectQuery_ReturnsCorrectSchema([Range(0, FilesCount - 1)] int index)
+        public void SelectQuery_ReturnsCorrectSchema([Range(1, FilesCount)] int index)
         {
+            index -= 1;
             AssertData(index);
             var expected = ExpectedResults[index].Schema;
             var actual = ActualResults[index].Schema;
@@ -73,8 +74,9 @@ namespace SimpleAggregation.Tests
         }
 
         [Test]
-        public void SelectQuery_ReturnsCorrectTypes([Range(0, FilesCount - 1)] int index)
+        public void SelectQuery_ReturnsCorrectTypes([Range(1, FilesCount)] int index)
         {
+            index -= 1;
             AssertData(index);
             var expected = ExpectedResults[index].Types;
             var actual = ActualResults[index].Types;
@@ -84,14 +86,22 @@ namespace SimpleAggregation.Tests
         }
 
         [Test]
-        public void SelectQuery_ReturnsCorrectData([Range(0, FilesCount - 1)] int index)
+        public void SelectQuery_ReturnsCorrectData([Range(1, FilesCount)] int index)
         {
+            index -= 1;
             AssertData(index);
             var expected = ExpectedResults[index].Data;
             var actual = ActualResults[index].Data;
             var expectedMessage = MessageComposer.Compose(ExpectedResults[index].Schema, expected);
             var actualMessage = MessageComposer.Compose(ActualResults[index].Schema, actual);
             Assert.AreEqual(expected, actual, "\nExpected:\n{0}\n\nActual:\n{1}\n", expectedMessage, actualMessage);
+        }
+
+        [Test]
+        public void SelectQuery_ContainsAggregate([Range(1, FilesCount)] int index)
+        {
+            var actual = Queries[index - 1];
+            Assert.IsTrue(SelectHelper.ContainsSelectFromAggregate(actual), "Query should contain 'SELECT' and at least one aggregate statement.");
         }
 
         private static void AssertData(int index)
