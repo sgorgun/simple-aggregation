@@ -136,6 +136,8 @@ namespace SimpleAggregation.Tests
         private static void DeserializeResultFiles()
         {
             var files = Directory.GetFiles(Path.Combine(ProjectDirectory, "Data"), "*.csv");
+            if (files.Length == 0)
+                throw new FileNotFoundException("Files with expected data were not found.");
             ExpectedResults = new SelectResult[FilesCount];
             for (var i = 0; i < FilesCount; i++)
                 ExpectedResults[i] = SelectHelper.DeserializeResult(files[i]);
