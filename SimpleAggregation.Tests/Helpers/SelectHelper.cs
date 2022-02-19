@@ -9,11 +9,11 @@ namespace SimpleAggregation.Tests.Helpers
 {
     internal class SelectHelper
     {
-        private static readonly Regex SelectDistinctFrom_Regex = new Regex(@"\s*SELECT\s+(DISTINCT\s+)*((\w+(\.\w+)*(\s+AS\s+((\w+)|('\w+')))*)|(\*))(\s*[\S\s][^;]*\s+FROM\s+\w+)");
-        private static readonly Regex SelectFromAggregate_Regex = new Regex(@"\s*SELECT\s+((COUNT)|(AVG)|(SUM)|(MIN)|(MAX))(\s+DISTINCT)*\s*\(\s*((\w+)|(\*))\s*\)(\s+AS\s+((\w+)|('\w+')*)|(\*))*(\s*[\S\s][^;]*\s+FROM\s+\w+)");
-        private static readonly Regex InnerJoin_Regex = new Regex(@"\s*INNER\s+JOIN\s+([\s\w]+ON){1}\s+([\s\.\w]*[^=]){1}\s*=");
-        private static readonly Regex OrderBy_Regex = new Regex(@"ORDER\s+BY\s+\w+");
-        private static readonly Regex GroupBy_Regex = new Regex(@"GROUP\s+BY\s+\w+");
+        private static readonly Regex SelectDistinctFrom_Regex = new Regex(@"\s*SELECT\s+(DISTINCT\s+)*((\w+(\.\w+)*(\s+AS\s+((\w+)|('\w+')))*)|(\*))(\s*[\S\s][^;]*\s+FROM\s+\w+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex SelectFromAggregate_Regex = new Regex(@"\s*SELECT\s+((COUNT)|(AVG)|(SUM)|(MIN)|(MAX))(\s+DISTINCT)*\s*\(\s*((\w+)|(\*))\s*\)(\s+AS\s+((\w+)|('\w+')*)|(\*))*(\s*[\S\s][^;]*\s+FROM\s+\w+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex InnerJoin_Regex = new Regex(@"\s*INNER\s+JOIN\s+([\s\w]+ON){1}\s+([\s\.\w]*[^=]){1}\s*=", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex OrderBy_Regex = new Regex(@"ORDER\s+BY\s+\w+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex GroupBy_Regex = new Regex(@"GROUP\s+BY\s+\w+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         public static bool ContainsSelectDistinctFrom(string query) => SelectDistinctFrom_Regex.IsMatch(query);
         public static bool ContainsSelectFromAggregate(string query) => SelectFromAggregate_Regex.IsMatch(query);
