@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using SimpleAggregation.Tests.Helpers;
+using AutocodeDB.Helpers;
 using System;
-using SimpleAggregation.Tests.Models;
+using AutocodeDB.Models;
 using System.IO;
 
 namespace SimpleAggregation.Tests
