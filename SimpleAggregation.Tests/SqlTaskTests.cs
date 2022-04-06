@@ -101,7 +101,10 @@ namespace SimpleAggregation.Tests
         public void SelectQuery_ContainsAggregate([Range(1, FilesCount)] int index)
         {
             var actual = Queries[index - 1];
-            Assert.IsTrue(SelectHelper.ContainsSelectFromAggregate(actual), "Query should contain 'SELECT' and at least one aggregate statement.");
+            Assert.IsTrue(
+                SelectHelper.ContainsSelectFrom(actual)&&SelectHelper.ContainsAggregationFunctions(actual)
+                , "Query should contain 'SELECT' and at least one aggregate statement."
+                );
         }
 
         private static void AssertData(int index)
